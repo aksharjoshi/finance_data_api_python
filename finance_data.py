@@ -19,10 +19,10 @@ def get_info_share():
 	share1 = Share(symbol)
 	try:
 		share1.get_info()
-		if share1:# is None:
+		if not share1:# is None:
 			print symbol," is not a valid share symbol. \nPlease re-run the program with correct share symbol"
 		else:
-			print "here"
+			#print "here"
 			print(datetime.datetime.now())
 			company = get_symbol(symbol)
 			print company
