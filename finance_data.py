@@ -2,6 +2,7 @@ from yahoo_finance import Share
 import datetime
 import requests
 import sys
+from decimal import Decimal
 
 def get_symbol(symbol):
     url = "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query={}&region=1&lang=en".format(symbol)
@@ -28,7 +29,15 @@ def get_info_share():
 			print company
 			print share1.get_price()
 			print share1.get_change()
-			print share1.get_short_ratio()
+			#print share1.get_short_ratio()
+			open = share1.get_open()
+			price = share1.get_price()
+			percChange = float(Decimal(price) - Decimal(open))/float(Decimal(open))
+			print "%f" % percChange +"%" 
+			
+		
+		
+			
 	except Exception as e:
 		print symbol," is not a valid share symbol. \nPlease re-run the program with correct share symbol"
 	except AttributeError as ae: 
